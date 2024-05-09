@@ -1,9 +1,16 @@
-//variable that grabs the input
-const inputDisplay = document.querySelector("#inputBox")
+let inputDisplay = document.querySelector('#inputBox')
+let buttons = document.querySelectorAll('button')
 
-function appendToInput(input){
-    inputDisplay.value += input
-}
-function calculate(){
-    inputDisplay.value = eval(inputDisplay.value)
-}
+let string = ""
+
+buttons.forEach(element => {
+    element.addEventListener('click', (b)=>{
+        if(b.target.innerText == '='){
+            string = String(eval(string))
+            inputDisplay.value = string
+        }else{
+            string += b.target.innerText
+            inputDisplay.value = string
+        }
+    })
+})
